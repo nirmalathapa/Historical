@@ -7,6 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 
-%W(arms calves chest forearms height hips neck shoulders thighs waist).each do |type|
-  MeasurementType.create name: type
+%W(arms calves chest forearms height hips neck shoulders thighs waist weight bodyfat).each do |type|
+  MeasurementType.find_or_create_by! name: type
 end
