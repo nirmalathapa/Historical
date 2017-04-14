@@ -1,0 +1,11 @@
+<%= form_for @measurement_form, url: measurements_path do |f| %>
+  <%= f.label :date %>
+  <%= f.text_field :date %>
+
+  <% MeasurementForm.measurement_fields.each do |field| %>
+    <%= f.label field %>
+    <%= f.text_field field %>
+  <% end %>
+
+  <%= f.submit :save %>
+<% end %>
