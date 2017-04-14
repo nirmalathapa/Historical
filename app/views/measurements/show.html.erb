@@ -1,0 +1,15 @@
+<%= form_tag measurements_path, method: :get do %>
+  <%= text_field_tag :date %>
+  <%= submit_tag 'Go' %>
+<% end %>
+
+Showing measurement for <%= @date %>
+
+<table>
+  <% @measurements.each do |key, value| %>
+  <tr>
+    <td><%= key %></td>
+    <td><%= value %></td>
+  </tr>
+  <% end %>
+</table>
