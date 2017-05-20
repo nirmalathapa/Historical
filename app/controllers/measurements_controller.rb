@@ -3,6 +3,19 @@ class MeasurementsController < ApplicationController
 
   def new
     @measurement_form = MeasurementForm.new(user: current_user)
+    @last_measurements = MeasurementType.all.inject({}) do |data, type|
+
+      current_record, last_record  = Measurement
+        .where(user: current_user, measurement_type: type)
+        .order(created_at: :desc)
+        .limit(2)
+        .to_a
+
+      change = current_record&.value.to_f - last_record&.value.to_f
+
+      data[type.name] = { date: last_record&.measurement_date, value: last_record&.value, change: change }
+      data
+    end
   end
 
   def create

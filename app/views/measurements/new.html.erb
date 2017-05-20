@@ -21,6 +21,13 @@
                   <%= f.label field, class: 'control-label col-md-3 col-sm-3 col-xs-12' %>
                   <div class="col-md-9 col-sm-9 col-xs-12">
                     <%= f.text_field field, class: 'form-control' %>
+                    <span>
+                      <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
+                    </span>
+
+                    <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
+                      Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
+                    <% end %>
                   </div>
                 </div>
               <% end %>
