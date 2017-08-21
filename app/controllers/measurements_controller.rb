@@ -40,6 +40,13 @@ class MeasurementsController < ApplicationController
     end
   end
 
+  def index
+    @type = MeasurementType.find_by(name: params[:type]) || MeasurementType.last
+    @measurements = Measurement
+        .where(user: current_user, measurement_type: @type)
+        .order(created_at: :desc)
+  end
+
   private
 
   def measurement_params

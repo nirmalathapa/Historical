@@ -1,0 +1,10 @@
+Showing all measurements for <%= @type.name %>
+
+<table class="table">
+  <% @measurements.each do |measurement| %>
+  <tr>
+    <td><%= measurement.created_at %></td>
+    <td><%= measurement.value %></td>
+  </tr>
+  <% end %>
+</table>

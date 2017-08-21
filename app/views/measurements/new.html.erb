@@ -28,6 +28,8 @@
                     <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
                       Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
                     <% end %>
+
+                    <%= link_to 'view history', measurements_path(type: field) %>
                   </div>
                 </div>
               <% end %>

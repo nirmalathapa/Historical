@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root to: 'measurements#new'
 
-  resources :measurements, only: [:new, :create]
+  resources :measurements, only: [:new, :create, :index]
   resource :measurements, only: :show
 end
