@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913141423) do
+ActiveRecord::Schema.define(version: 20171014112537) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20170913141423) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tracker_id"
+    t.index ["tracker_id"], name: "index_measurement_types_on_tracker_id"
   end
 
   create_table "measurements", id: :serial, force: :cascade do |t|
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170913141423) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "measurement_types", "trackers"
   add_foreign_key "measurements", "measurement_types"
   add_foreign_key "trackers", "users"
 end
