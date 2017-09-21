@@ -9,14 +9,26 @@
   </head>
 
   <body class="<%= content_for(:body_class) %>">
+      <% if user_signed_in? %>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      <% end %>
 
-    <% if user_signed_in? %>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    <% end %>
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          <%= notice %>
+        </div>
+      <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade in" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+          </button>
+          <%= alert %>
+        </div>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
   </body>
 </html>
