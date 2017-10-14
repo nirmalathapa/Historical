@@ -25,9 +25,16 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section active">
                 <ul class="nav side-menu" style="">
-                  <li><a><i class="fa fa-home"></i> Home</a>
+                  <li>
+                    <%= link_to root_path  do %>
+                      <i class="fa fa-home"></i>Home
+                    <% end %>
                   </li>
-
+                  <li>
+                    <%= link_to trackers_path  do %>
+                      <i class="fa fa-table"></i>Trackers
+                    <% end %>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -42,25 +49,21 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    John Doe
+                    <%= current_user.email %>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <li><a href="javascript:;"> Profile</a></li>
-                    <li>
-                      <a href="javascript:;">
-                        <span>Settings</span>
-                      </a>
-                    </li>
-
                     <% if user_signed_in? %>
+                      <li>
+                        <%= link_to edit_user_registration_path do  %>
+                          <span>Settings</span>
+                        <% end %>
+                      </li>
 
                       <li>
                         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
                       </li>
-
                     <% end %>
-
                   </ul>
                 </li>
               </ul>
