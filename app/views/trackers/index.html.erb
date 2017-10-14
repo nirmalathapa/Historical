@@ -1,25 +1,31 @@
-<h1>Trackers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="x_panel">
+      <h1>Trackers</h1>
 
-  <tbody>
-    <% @trackers.each do |tracker| %>
-      <tr>
-        <td><%= tracker.name %></td>
-        <td><%= link_to 'Show', tracker %></td>
-        <td><%= link_to 'Edit', edit_tracker_path(tracker) %></td>
-        <td><%= link_to 'Destroy', tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tracker', new_tracker_path %>
+  <div class="x_content">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @trackers.each do |tracker| %>
+          <tr>
+              <td>
+              <%= tracker.name %>
+              </td>
+              <td>
+              <%= link_to 'Show', tracker, class: 'btn btn-success btn-xs' %>
+              <%= link_to 'Edit', edit_tracker_path(tracker), class: 'btn btn-info btn-xs' %>
+              <%= link_to 'Destroy', tracker, class: 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Are you sure?' } %>
+            </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+    <br>
+    <%= link_to 'New Tracker', new_tracker_path, class: 'btn btn-default btn-lg' %>
+  </div>
+</div>
