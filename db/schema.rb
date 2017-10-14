@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20171014112537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "measurement_types", id: :serial, force: :cascade do |t|
+  create_table "measurement_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171014112537) do
     t.index ["tracker_id"], name: "index_measurement_types_on_tracker_id"
   end
 
-  create_table "measurements", id: :serial, force: :cascade do |t|
+  create_table "measurements", force: :cascade do |t|
     t.integer "user_id"
     t.date "measurement_date"
     t.datetime "created_at", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171014112537) do
     t.index ["user_id"], name: "index_trackers_on_user_id"
   end
 
-  create_table "users", id: :serial, force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
