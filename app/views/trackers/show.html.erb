@@ -5,5 +5,15 @@
   <%= @tracker.name %>
 </p>
 
+<% if @tracker.measurement_types %>
+  <ul>
+    <% @tracker.measurement_types.each do |type| %>
+      <li>
+        <%= type.name %> <%= link_to 'X', '#' %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_tracker_path(@tracker) %> |
 <%= link_to 'Back', trackers_path %>
