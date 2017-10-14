@@ -8,27 +8,99 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
-  <body class="<%= content_for(:body_class) %>">
-      <% if user_signed_in? %>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-      <% end %>
+  <body class="nav-md <%= content_for(:body_class) %>">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <%= link_to 'Historical', root_path, class: 'site_title' %>
+            </div>
 
-      <% if notice %>
-        <div class="alert alert-success alert-dismissible fade in" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-          </button>
-          <%= notice %>
+            <div class="clearfix"></div>
+
+            <br>
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section active">
+                <ul class="nav side-menu" style="">
+                  <li><a><i class="fa fa-home"></i> Home</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+          </div>
         </div>
-      <% end %>
 
-      <% if alert %>
-        <div class="alert alert-danger alert-dismissible fade in" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-          </button>
-          <%= alert %>
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    John Doe
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="javascript:;"> Profile</a></li>
+                    <li>
+                      <a href="javascript:;">
+                        <span>Settings</span>
+                      </a>
+                    </li>
+
+                    <% if user_signed_in? %>
+
+                      <li>
+                        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+                      </li>
+
+                    <% end %>
+
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
         </div>
-      <% end %>
+        <!-- /top navigation -->
 
-      <%= yield %>
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <% if notice %>
+            <div class="alert alert-success alert-dismissible fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+              </button>
+              <%= notice %>
+            </div>
+          <% end %>
+
+          <% if alert %>
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+              </button>
+              <%= alert %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
   </body>
 </html>
