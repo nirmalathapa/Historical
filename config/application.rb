@@ -13,5 +13,13 @@ module Historical
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths << Rails.root.join('lib')
     config.autoload_paths << Rails.root.join('app', 'forms')
+
+     config.to_prepare do
+       Devise::SessionsController.layout 'simple'
+       Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? 'application' : 'devise' }
+       Devise::ConfirmationsController.layout 'simple'
+       Devise::UnlocksController.layout 'simple'
+       Devise::PasswordsController.layout 'simple'
+     end
   end
 end
