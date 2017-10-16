@@ -16,3 +16,7 @@ cache:
 script:
   - bundle exec rake db:create db:migrate
   - bundle exec rake
+
+deploy:
+  provider: heroku
+  api_key: ${HEROKU_API_KEY}
