@@ -2,8 +2,8 @@ class MeasurementsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @measurement_form = MeasurementForm.new(user: current_user)
-    @last_measurements = MeasurementType.all.inject({}) do |data, type|
+    @measurement_form = MeasurementForm.new(current_user, tracker)
+    @last_measurements = measurement_types.inject({}) do |data, type|
 
       current_record, last_record  = Measurement
         .where(user: current_user, measurement_type: type)
@@ -19,7 +19,7 @@ class MeasurementsController < ApplicationController
   end
 
   def create
-    @measurement_form = MeasurementForm.new(measurement_params.merge(user: current_user))
+    @measurement_form = MeasurementForm.new(current_user, tracker, measurement_params)
 
     if @measurement_form.save
       redirect_to new_measurement_path, notice: 'Saved'
@@ -30,7 +30,7 @@ class MeasurementsController < ApplicationController
 
   def show
     @date = parse_date
-    @measurements = MeasurementType.all.inject({}) do |data, type|
+    @measurements = measurement_types.all.inject({}) do |data, type|
       value = Measurement
         .find_by(user: current_user, measurement_date: @date, measurement_type: type)
         .try(:value)
@@ -51,8 +51,17 @@ class MeasurementsController < ApplicationController
 
   def measurement_params
     params.require(:measurement_form).permit(
-      *(MeasurementForm.measurement_fields + [:date])
+      *(MeasurementForm.new(current_user, tracker).measurement_fields + [:date])
     )
+  end
+
+  def measurement_types
+    tracker.measurement_types
+  end
+
+  def tracker
+    @tracker ||=
+      current_user.trackers.find_by(id: params[:tracker_id]) || current_user.trackers.first
   end
 
   def parse_date
