@@ -6,104 +6,87 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
-  <body class="nav-md <%= content_for(:body_class) %>">
-    <div class="container body">
-      <div class="main_container">
-        <div class="col-md-3 left_col">
-          <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-              <%= link_to 'Historical', root_path, class: 'site_title' %>
-            </div>
+  <body class="skin-blue sidebar-mini <%= content_for(:body_class) %>">
+    <div class="wrapper">
 
-            <div class="clearfix"></div>
+      <header class="main-header">
 
-            <br>
+        <%= link_to root_path, class: 'logo' do %>
+          <%= content_tag :span, class: 'logo-mini' do %>
+            <b>H</b>
+          <% end %>
+          <%= content_tag :span, class: 'logo-lg' do %>
+            Historical
+          <% end %>
+        <% end %>
 
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-              <div class="menu_section active">
-                <ul class="nav side-menu" style="">
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span><%= current_user.email %></span>
+                </a>
+                <ul class="dropdown-menu">
                   <li>
-                    <%= link_to root_path  do %>
-                      <i class="fa fa-home"></i>Home
-                    <% end %>
+                      <%= link_to 'Profil', edit_user_registration_path %>
                   </li>
                   <li>
-                    <%= link_to trackers_path  do %>
-                      <i class="fa fa-table"></i>Trackers
-                    <% end %>
+                      <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
                   </li>
                 </ul>
-              </div>
-            </div>
-            <!-- /sidebar menu -->
+              </li>
+            </ul>
           </div>
-        </div>
+        </nav>
+      </header>
 
-        <!-- top navigation -->
-        <div class="top_nav">
-          <div class="nav_menu">
-            <nav>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="">
-                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <%= current_user.email %>
-                    <span class=" fa fa-angle-down"></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-usermenu pull-right">
-                    <% if user_signed_in? %>
-                      <li>
-                        <%= link_to edit_user_registration_path do  %>
-                          <span>Settings</span>
-                        <% end %>
-                      </li>
+      <aside class="main-sidebar">
 
-                      <li>
-                        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-                      </li>
-                    <% end %>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-          </div>
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
 
-        </div>
-        <!-- /top navigation -->
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu tree" data-widget="tree">
+            <li>
+              <%= link_to root_path  do %>
+                <i class="fa fa-home"></i>Home
+              <% end %>
+            </li>
+            <li class="active">
+              <%= link_to trackers_path do %>
+                <i class="fa fa-table"></i><span>Trackers</span>
+              <% end %>
+            </li>
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <% if notice %>
-            <div class="alert alert-success alert-dismissible fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-              </button>
-              <%= notice %>
-            </div>
-          <% end %>
+          <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
 
-          <% if alert %>
-            <div class="alert alert-danger alert-dismissible fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-              </button>
-              <%= alert %>
-            </div>
-          <% end %>
-
+      <div class="content-wrapper">
+        <section class="content-header">
+          <h1></h1>
+        </section>
+        <section class="content">
           <%= yield %>
-        </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
+        </section>
       </div>
+
+      <footer class="main-footer">
+        <a href="https://github.com/deepredsky/Historical">Source</a>
+      </footer>
     </div>
   </body>
 </html>
