@@ -9,5 +9,9 @@
 
 console.log('Hello World from Webpacker')
 
-import "admin-lte/dist/js/adminlte.js"
+import jQuery from 'jquery'
+
+window.jQuery = jQuery
+import "bootstrap"
+import "admin-lte/dist/js/adminlte"
 import "../default.sass"
