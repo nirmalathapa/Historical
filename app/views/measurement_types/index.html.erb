@@ -14,7 +14,6 @@
     <% @measurement_types.each do |measurement_type| %>
       <tr>
         <td><%= measurement_type.name %></td>
-        <td><%= link_to 'Show', measurement_type %></td>
         <td><%= link_to 'Edit', edit_measurement_type_path(measurement_type) %></td>
         <td><%= link_to 'Destroy', measurement_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
