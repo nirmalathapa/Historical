@@ -12,6 +12,7 @@ console.log('Hello World from Webpacker')
 import jQuery from 'jquery'
 
 window.jQuery = jQuery
+import {} from 'jquery-ujs'
 import "bootstrap"
 import "admin-lte/dist/js/adminlte"
 import "../default.sass"
