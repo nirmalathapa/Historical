@@ -1,14 +1,15 @@
-<section class="login_content">
+<div class="login-box-body">
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <h1>Forgot password?</h1>
     <%= devise_error_messages! %>
 
-    <div class="field">
+    <div class="form-group has-feedback">
       <%= f.email_field :email, autofocus: true, placeholder: 'Email', class:'form-control'%>
+      <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
     </div>
 
     <div>
-      <%= f.submit "Send me reset password instructions", class:'btn btn-default' %>
+      <%= f.submit "Send me reset password instructions", class:'btn btn-primary btn-block btn-fla' %>
     </div>
 
     <div class="separator">
@@ -17,8 +18,8 @@
         <%= link_to "Log in", new_session_path(resource_name), class: 'to_register' %><br />
         </p>
       <% end -%>
-
       <div class="clearfix"></div>
       <br>
     </div>
   <% end %>
+</div>
