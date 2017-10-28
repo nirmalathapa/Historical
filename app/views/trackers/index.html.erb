@@ -18,6 +18,7 @@
               <%= link_to 'Show', tracker, class: 'btn btn-success btn-xs' %>
               <%= link_to 'Edit', edit_tracker_path(tracker), class: 'btn btn-info btn-xs' %>
               <%= link_to 'Destroy', tracker, class: 'btn btn-danger btn-xs', method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Measurement Types', tracker_measurement_types_path(tracker), class: 'btn btn-xs btn-default' %>
             </td>
           </tr>
         <% end %>
