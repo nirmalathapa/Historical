@@ -1,5 +1,6 @@
 class MeasurementsController < ApplicationController
   before_action :authenticate_user!
+  before_action :check_default_tracker, only: :new
 
   def new
     @measurement_form = MeasurementForm.new(current_user, tracker)
@@ -62,6 +63,10 @@ class MeasurementsController < ApplicationController
   def tracker
     @tracker ||=
       current_user.trackers.find_by(id: params[:tracker_id]) || current_user.trackers.first
+  end
+
+  def check_default_tracker
+    return redirect_to new_tracker_path unless tracker
   end
 
   def parse_date
