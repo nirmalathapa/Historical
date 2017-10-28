@@ -1,0 +1,5 @@
+<h1>Editing Measurement Type</h1>
+
+<%= render 'form', measurement_type: @measurement_type, tracker: @tracker %>
+
+<%= link_to 'Back', tracker_measurement_types_path(@measurement_type.tracker) %>
