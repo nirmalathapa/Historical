@@ -9,7 +9,6 @@ before_install:
   - cp config/database.yml.sample config/database.yml
   - export RAILS_ENV=test
 
-
 cache:
   bundler: true
   directories:
@@ -18,7 +17,7 @@ cache:
 
 install:
   - bundle install
-  - nvm install node
+  - nvm install 8
   - node -v
   - npm i -g yarn
   - yarn install
