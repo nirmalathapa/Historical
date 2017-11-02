@@ -12,6 +12,6 @@
     "webpack-dev-server": "^2.9.3"
   },
   "engines": {
-    "node": "^8.6.0"
+    "node": "8.x.x"
   }
 }
