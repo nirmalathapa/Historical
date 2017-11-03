@@ -21,4 +21,13 @@ class TrackerTest < ActiveSupport::TestCase
     refute tracker.valid?
     assert_not_nil tracker.errors[:user]
   end
+
+  test "deletes dependent measurement types" do
+    tracker = create(:tracker)
+    create(:measurement_type, tracker: tracker)
+
+    assert_difference('MeasurementType.count', -1) do
+      tracker.destroy
+    end
+  end
 end
