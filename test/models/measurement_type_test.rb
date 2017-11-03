@@ -21,4 +21,13 @@ class MeasurementTypeTest < ActiveSupport::TestCase
     refute measurement_type.valid?
     assert_not_nil measurement_type.errors[:tracker]
   end
+
+  test "deletes dependent measurements" do
+    measurement_type = create(:measurement_type)
+    create(:measurement, measurement_type: measurement_type)
+
+    assert_difference('Measurement.count', -1) do
+      measurement_type.destroy
+    end
+  end
 end
