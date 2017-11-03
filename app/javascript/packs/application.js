@@ -9,9 +9,13 @@
 
 console.log('Hello World from Webpacker')
 
+import Rails from 'rails-ujs';
 import jQuery from 'jquery'
 
 window.jQuery = jQuery
+
+Rails.start()
+
 import "bootstrap"
 import "admin-lte/dist/js/adminlte"
 import "../default.sass"
