@@ -30,7 +30,7 @@ class MeasurementTypesController < ApplicationController
   # PATCH/PUT /measurement_types/1
   def update
     if @measurement_type.update(measurement_type_params)
-      redirect_to @measurement_type, notice: 'Measurement type was successfully updated.'
+      redirect_to tracker_measurement_types_url(@measurement_type.tracker), notice: 'Measurement type was successfully updated.'
     else
       render :edit
     end

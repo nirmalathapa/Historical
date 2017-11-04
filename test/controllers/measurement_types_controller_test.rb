@@ -35,9 +35,9 @@ class MeasurementTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update measurement_type" do
-    @measurement_type = create(:measurement_type)
+    @measurement_type = create(:measurement_type, tracker: @tracker)
     patch measurement_type_url(@measurement_type), params: { measurement_type: { name: "test" } }
-    assert_redirected_to measurement_type_url(@measurement_type)
+    assert_redirected_to tracker_measurement_types_url(@tracker)
   end
 
   test "should destroy measurement_type" do
