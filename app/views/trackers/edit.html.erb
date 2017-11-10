@@ -1,6 +1,13 @@
 <h1>Editing Tracker</h1>
+<div class ="box box-info">
+  <div class ="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="box-body">
+        <%= render 'form', tracker: @tracker %>
 
-<%= render 'form', tracker: @tracker %>
-
-<%= link_to 'Show', @tracker %> |
-<%= link_to 'Back', trackers_path %>
+        <%= link_to 'Show', @tracker %> |
+        <%= link_to 'Back', trackers_path %>
+      </div>
+    </div>
+  </div>
+</div>
