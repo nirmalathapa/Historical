@@ -1,10 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
+<h1>
+  Name:
   <%= @tracker.name %>
-</p>
-
+</h1>
 <% if @tracker.measurement_types %>
   <ul>
     <% @tracker.measurement_types.each do |type| %>
