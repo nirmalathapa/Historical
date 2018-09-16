@@ -10,34 +10,32 @@
       <%= form_for @measurement_form, url: measurements_path, html: { class: 'form-horizontal form-label-left input_mask' } do |f| %>
         <div class="box-body">
           <div class="form-group">
-            <%= f.label :date, class: 'control-label col-md-2 col-sm-3 col-xs-12' %>
-            <div class="col-md-3 col-sm-9 col-xs-12">
-              <%= f.text_field :date, class: 'form-control' %>
+            <%= f.label :date %>
+            <div class="control small">
+              <%= f.text_field :date, class: 'input' %>
             </div>
           </div>
 
           <% @measurement_form.measurement_fields.each do |field| %>
             <div class="form-group">
               <%= f.label field, class: 'control-label col-md-2 col-sm-3 col-xs-12' %>
-              <div class="col-md-3 col-sm-9 col-xs-12">
-                <%= f.text_field field, class: 'form-control' %>
-                <span>
-                  <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
-                </span>
-
-                <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
-                  Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
-              <% end %>
-
-              <%= link_to 'view history', measurements_path(type: field) %>
-              </div>
+                <div class="control">
+                    <%= f.text_field field, class: 'input' %>
+                </div>
+                <div class="control">
+                    <span>
+                    <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
+                    </span>
+                    <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
+                    Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
+                    <% end %> 
+                    <%= link_to 'view history', measurements_path(type: field) %>
+                </div>
             </div>
           <% end %>
         </div>
 
-        <div class="box-footer">
-          <%= f.submit "Save Measurements", class: 'btn btn-primary btn-flat' %>
-        </div>
+          <%= f.submit "Save Measurements", class: 'button is-primary' %>
       <% end %>
     </div>
   </div>
