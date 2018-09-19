@@ -7,7 +7,6 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
-    "bulma": "^0.7.1",
     "webpack-dev-server": "^2.9.3"
   },
   "engines": {
