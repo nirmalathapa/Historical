@@ -3,6 +3,7 @@
     "@rails/webpacker": "^3.0.2",
     "coffeescript": "1.12.7",
     "font-awesome": "^4.7.0",
+    "picnic": "^6.5.0",
     "rails-ujs": "^5.1.4",
     "webpack-merge": "^4.1.0"
   },
