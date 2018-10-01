@@ -1,12 +1,12 @@
 <h2>Measurements</h2>    
-<%= form_for @measurement_form, url: measurements_path, html: { class: 'form-horizontal form-label-left input_mask' } do |f| %>
+<%= form_for @measurement_form, url: measurements_path do |f| %>
     <div class="flex">
-        <div class="full">
+        <div>
             <%= f.label :date %>
             <%= f.text_field :date, class: 'input' %>
         </div>
         <% @measurement_form.measurement_fields.each do |field| %>
-            <div class="full">
+            <div>
                 <%= f.label field %>
                 <%= f.text_field field%>
                 <span>
