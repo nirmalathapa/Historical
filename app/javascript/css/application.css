@@ -12,4 +12,6 @@ footer{
     padding: 1em 1em;
     height: 3em;
 }
-
+nav .menu>* {
+    display: inline;
+}
