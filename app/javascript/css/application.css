@@ -32,5 +32,15 @@ footer{
     text-decoration: underline;
     background: blue;
 }
-
-
+.show{
+    background: #4CAF50;
+}
+.edit{
+    background: rgb(142, 77, 182);
+}
+.delete{
+    background: #F4511E;
+}
+.measurement{
+    background: #009688;
+}
