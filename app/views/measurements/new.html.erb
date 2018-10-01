@@ -1,23 +1,23 @@
 <h2>Measurements</h2>    
 <%= form_for @measurement_form, url: measurements_path do |f| %>
-    <div class="flex">
-        <div>
-            <%= f.label :date %>
-            <%= f.text_field :date, class: 'input' %>
-        </div>
-        <% @measurement_form.measurement_fields.each do |field| %>
-            <div>
-                <%= f.label field %>
-                <%= f.text_field field%>
-                <span>
-                    <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
-                </span>
-                <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
-                    Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
-                <% end %> 
-                <%= link_to 'view history', measurements_path(type: field) %>
-            </div>
-        <% end %>
+  <div class="flex">
+    <div>
+      <%= f.label :date %>
+      <%= f.text_field :date, class: 'input' %>
     </div>
+    <% @measurement_form.measurement_fields.each do |field| %>
+      <div>
+        <%= f.label field %>
+        <%= f.text_field field%>
+        <span>
+          <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
+        </span>
+        <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
+          Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
+      <% end %> 
+      <%= link_to 'view history', measurements_path(type: field) %>
+      </div>
+    <% end %>
+  </div>
   <%= f.submit "Save Measurements" %>
 <% end %>

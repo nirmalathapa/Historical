@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Historical</title>
-  <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= javascript_pack_tag 'application' %>
-  <%= stylesheet_pack_tag 'application' %>
-</head>
-<body>
-<nav>
-  <%= link_to root_path, class: 'logo' do %>
-      <%= content_tag :span, class: 'brand' do %>
-        Historical
+  <head>
+    <title>Historical</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= stylesheet_pack_tag 'application' %>
+  </head>
+  <body>
+    <nav>
+      <%= link_to root_path, class: 'logo' do %>
+        <%= content_tag :span, class: 'brand' do %>
+          Historical
+        <% end %>
       <% end %>
-  <% end %>
 
-  <div class="menu">
-      <%= current_user.email %>
-      <%= link_to 'Profile', edit_user_registration_path, class: 'pseudo button' %>
-      <%= button_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'pseudo' %>
-  </div>
-</nav>
+      <div class="menu">
+        <%= current_user.email %>
+        <%= link_to 'Profile', edit_user_registration_path, class: 'pseudo button' %>
+        <%= button_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'pseudo' %>
+      </div>
+    </nav>
 
-<main class="wrapper">
-  <section class="flex two one-600">
+    <main class="wrapper">
+    <section class="flex two one-600">
       <aside class="third sixth-1000">
-          <ul>
-              <li>
-              <%= link_to root_path  do %>
-                  <i class="fa fa-home"></i><span>Home</span>
-              <% end %>
-              </li>
-              <li class="active">
-              <%= link_to trackers_path do %>
-                  <i class="fa fa-table"></i><span>Trackers</span>
-              <% end %>
-              </li>
-          </ul> 
+        <ul>
+          <li>
+            <%= link_to root_path  do %>
+              <i class="fa fa-home"></i><span>Home</span>
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to trackers_path do %>
+              <i class="fa fa-table"></i><span>Trackers</span>
+            <% end %>
+          </li>
+        </ul> 
       </aside>
       <article class="two-third half-1000">
-          <%= yield %>
+        <%= yield %>
       </article>
-  </section>
-</main>
+    </section>
+    </main>
 
-<footer class="flex one">
-  <div>
-    <a href="https://github.com/deepredsky/Historical">Source</a>
-  </div> 
-</footer>
-</body>
+    <footer class="flex one">
+      <div>
+        <a href="https://github.com/deepredsky/Historical">Source</a>
+      </div> 
+    </footer>
+  </body>
 </html>

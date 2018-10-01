@@ -1,17 +1,17 @@
-    <h2>Showing all measurements for <%= @type.name %></h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Measurement Date</th>
-          <th>Measurement Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @measurements.each do |measurement| %>
-          <tr>
-            <td><%= measurement.created_at %></td>
-            <td><%= measurement.value %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<h2>Showing all measurements for <%= @type.name %></h2>
+<table>
+  <thead>
+    <tr>
+      <th>Measurement Date</th>
+      <th>Measurement Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @measurements.each do |measurement| %>
+      <tr>
+        <td><%= measurement.created_at %></td>
+        <td><%= measurement.value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

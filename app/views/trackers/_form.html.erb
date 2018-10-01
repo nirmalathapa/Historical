@@ -4,9 +4,9 @@
       <h2><%= pluralize(tracker.errors.count, "error") %> prohibited this tracker from being saved:</h2>
 
       <ul>
-      <% tracker.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% tracker.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
@@ -16,5 +16,5 @@
     <%= form.text_field :name, id: :tracker_name %>
   </div>
 
-    <%= form.submit "Create New Tracker" %>
+  <%= form.submit "Create New Tracker" %>
 <% end %>
