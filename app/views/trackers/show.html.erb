@@ -14,6 +14,6 @@
   </ul>
 <% end %>
 
-<%= link_to 'Edit', edit_tracker_path(@tracker) %> |
-<%= link_to 'Measurement Types', tracker_measurement_types_path(@tracker) %> |
-<%= link_to 'Back', trackers_path %>
+<%= link_to 'Edit', edit_tracker_path(@tracker), class: 'pseudo button' %>
+<%= link_to 'Measurement Types', tracker_measurement_types_path(@tracker), class: 'pseudo button' %>
+<%= link_to 'Back', trackers_path, class: 'pseudo button' %>

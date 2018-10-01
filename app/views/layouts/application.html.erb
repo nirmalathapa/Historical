@@ -3,91 +3,52 @@
   <head>
     <title>Historical</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>
   </head>
-
-  <body class="skin-blue sidebar-mini <%= content_for(:body_class) %>">
-    <div class="wrapper">
-
-      <header class="main-header">
-
-        <%= link_to root_path, class: 'logo' do %>
-          <%= content_tag :span, class: 'logo-mini' do %>
-            <b>H</b>
-          <% end %>
-          <%= content_tag :span, class: 'logo-lg' do %>
-            Historical
-          <% end %>
+  <body>
+    <nav>
+      <%= link_to root_path, class: 'logo' do %>
+        <%= content_tag :span, class: 'brand' do %>
+          Historical
         <% end %>
+      <% end %>
 
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-          <!-- Sidebar toggle button-->
-          <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-            <span class="sr-only">Toggle navigation</span>
-          </a>
-          <!-- Navbar Right Menu -->
-          <div class="navbar-custom-menu">
-            <ul class="nav navbar-nav">
-              <li class="dropdown user">
-                <!-- Menu Toggle Button -->
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <%= current_user.email %>
-                  <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <%= link_to 'Profile', edit_user_registration_path %>
-                  </li>
-                  <li>
-                    <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </nav>
-      </header>
-
-      <aside class="main-sidebar">
-
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-
-          <!-- Sidebar Menu -->
-          <ul class="sidebar-menu tree" data-widget="tree">
-            <li>
-              <%= link_to root_path  do %>
-                <i class="fa fa-home"></i><span>Home</span>
-              <% end %>
-            </li>
-            <li class="active">
-              <%= link_to trackers_path do %>
-                <i class="fa fa-table"></i><span>Trackers</span>
-              <% end %>
-            </li>
-
-          <!-- /.sidebar-menu -->
-        </section>
-        <!-- /.sidebar -->
-      </aside>
-
-      <div class="content-wrapper">
-        <section class="content-header">
-          <h1></h1>
-        </section>
-        <section class="content">
-          <%= yield %>
-        </section>
+      <div class="menu">
+        <%= current_user.email %>
+        <%= link_to 'Profile', edit_user_registration_path, class: 'pseudo button' %>
+        <%= button_to 'Sign out', destroy_user_session_path, :method => :delete, class: 'pseudo' %>
       </div>
+    </nav>
 
-      <footer class="main-footer">
+    <main class="wrapper">
+    <section class="flex two one-600">
+      <aside class="third sixth-1000">
+        <ul>
+          <li>
+            <%= link_to root_path  do %>
+              <i class="fa fa-home"></i><span>Home</span>
+            <% end %>
+          </li>
+          <li class="active">
+            <%= link_to trackers_path do %>
+              <i class="fa fa-table"></i><span>Trackers</span>
+            <% end %>
+          </li>
+        </ul> 
+      </aside>
+      <article class="two-third half-1000">
+        <%= yield %>
+      </article>
+    </section>
+    </main>
+
+    <footer class="flex one">
+      <div>
         <a href="https://github.com/deepredsky/Historical">Source</a>
-      </footer>
-    </div>
+      </div> 
+    </footer>
   </body>
 </html>

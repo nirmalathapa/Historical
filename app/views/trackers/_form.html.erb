@@ -4,18 +4,17 @@
       <h2><%= pluralize(tracker.errors.count, "error") %> prohibited this tracker from being saved:</h2>
 
       <ul>
-      <% tracker.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+        <% tracker.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
       </ul>
     </div>
   <% end %>
 
   <div class="form-group">
-    <%= form.label :name, class: 'control-label col-md-1 col-sm-1 col-xs-1' %>
-        <%= form.text_field :name, id: :tracker_name %>
-  
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :tracker_name %>
   </div>
 
-    <%= form.submit "Create New Tracker", class: 'btn btn-primary btn-flat' %>
+  <%= form.submit "Create New Tracker" %>
 <% end %>
