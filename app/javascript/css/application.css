@@ -1,1 +1,36 @@
 @import "picnic/picnic.min.css";
+ul{
+    list-style: none;
+}
+.wrapper > section {
+    text-align: left;
+    margin: 0;
+    width:100%;
+    max-width: 100%;
+    padding: 4em 0 0 0;
+    min-height: 100%;    
+}
+
+main{
+    min-height: calc(100vh - 3em);
+}
+aside{
+    border-right: 1px solid #eeeeee; 
+    min-height: 80vh;
+}
+.divider{
+    padding: 0 0 0 5em;
+}
+footer{
+    box-shadow: 0 0 0.2em rgba(17, 17, 17, .2);
+    padding: 1em 1em;
+    height: 3em;
+}
+
+.footer-wrap a{
+    width: 100px;
+    text-decoration: underline;
+    background: blue;
+}
+
+
