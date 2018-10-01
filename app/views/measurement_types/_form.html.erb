@@ -1,6 +1,6 @@
 <%= form_with(model: [tracker, measurement_type], local: true) do |form| %>
   <% if measurement_type.errors.any? %>
-    <div id="error_explanation">
+    <div>
       <h2><%= pluralize(measurement_type.errors.count, "error") %> prohibited this measurement_type from being saved:</h2>
 
       <ul>
@@ -11,12 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :measurement_type_name %>
-  </div>
-
-  <div class="actions">
+  
     <%= form.submit %>
-  </div>
+  
 <% end %>
