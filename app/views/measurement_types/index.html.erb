@@ -1,25 +1,25 @@
 <p><%= notice %></p>
 <h1>Measurement Types</h1>
-<table class="flex two">
-<thead class="full head">
-    <tr>
-    <th>Name</th>      
-    </tr>
-</thead>
-
-<tbody class="half">
-    <% @measurement_types.each do |measurement_type| %>
-    <tr>
-        <td><%= measurement_type.name %></td>
-        <td><%= link_to 'Edit', edit_measurement_type_path(measurement_type) %></td>
-        <td><%= link_to 'Destroy', measurement_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-</tbody>
-
+<table class="primary">
+    <thead>
+        <tr>
+           <th>Name</th>      
+            <th></th>      
+            <th></th>      
+        </tr>
+    </thead>
+    <tbody>
+        <% @measurement_types.each do |measurement_type| %>
+        <tr>
+            <td><%= measurement_type.name %></td>
+            <td><%= link_to 'Edit', edit_measurement_type_path(measurement_type), class: 'pseudo button' %></td>
+            <td><%= link_to 'Destroy', measurement_type, method: :delete, data: { confirm: 'Are you sure?' }, class: 'error button' %></td>
+        </tr>
+        <% end %>
+    </tbody>
 </table>
-<%= link_to 'New Measurement Type', new_tracker_measurement_type_path(tracker: @tracker) %>
+<%= link_to 'New Measurement Type', new_tracker_measurement_type_path(tracker: @tracker), class: 'button' %>
+
 <div>
     <%= link_to 'Back', trackers_path %>      
 </div>
-
