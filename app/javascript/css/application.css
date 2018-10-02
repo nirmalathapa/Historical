@@ -1,5 +1,14 @@
 @import "picnic/picnic.min.css";
 
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 .wrapper > section {
     text-align: left;
     margin: 0;
@@ -17,4 +26,12 @@ footer{
 
 nav .menu>* {
     display: inline;
+}
+
+.wrapper {
+    flex: 1 0 auto;
+  }
+
+footer {
+    flex-shrink: 0;
 }
