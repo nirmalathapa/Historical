@@ -1,12 +1,12 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <h1>Log in</h1>
 
-  <div class="form-group has-feedback">
-    <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>
+  <div class="two-third">
+    <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'email' %>
     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
   </div>
 
-  <div class="form-group has-feedback">
+  <div class="two-third">
     <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
   </div>
