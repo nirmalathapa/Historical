@@ -17,7 +17,7 @@ cache:
 
 install:
   - bundle install
-  - nvm install 10
+  - nvm install 10.15
   - node -v
   - npm i -g yarn
   - yarn install
