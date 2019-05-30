@@ -1,5 +1,12 @@
-<h2>Measurements</h2>    
-<%= form_for @measurement_form, url: measurements_path do |f| %>
+<% current_user.trackers.each do |tracker| %>
+  <%= link_to new_measurement_path(tracker_id: tracker.id), class: "button#{' pseudo' unless @measurement_form.tracker == tracker}" do %>
+    <i class=""></i><span><%= tracker.name %></span>
+  <% end %>
+<% end %>
+
+<h2>Measurements</h2>
+
+<%= form_for @measurement_form, url: measurements_path(tracker_id: @measurement_form.tracker.id) do |f| %>
   <div class="flex">
     <div>
       <%= f.label :date %>
@@ -9,13 +16,16 @@
       <div>
         <%= f.label field %>
         <%= f.text_field field%>
-        <span>
-          <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
-        </span>
-        <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
-          Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
-      <% end %> 
-      <%= link_to 'view history', measurements_path(type: field) %>
+
+        <% if @last_measurements && @last_measurements[field][:value] %>
+          <span>
+            <%= @last_measurements[field][:value] %> (<%= @last_measurements[field][:date] %>)
+          </span>
+          <%= content_tag :span, class: css_for_change(field, @last_measurements[field][:change]) do %>
+            Change: <%= number_with_precision @last_measurements[field][:change], precision: 1 %>
+          <% end %>
+          <%= link_to 'view history', measurements_path(type: field) %>
+        <% end %>
       </div>
     <% end %>
   </div>

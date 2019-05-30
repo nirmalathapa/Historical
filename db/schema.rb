@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_10_14_112537) do
+ActiveRecord::Schema.define(version: 2019_05_30_133032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2017_10_14_112537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tracker_id"
+    t.string "type_name"
     t.index ["tracker_id"], name: "index_measurement_types_on_tracker_id"
   end
 

@@ -9,7 +9,7 @@
   <tbody>
     <% @measurements.each do |measurement| %>
       <tr>
-        <td><%= measurement.created_at %></td>
+        <td><%= measurement.measurement_date %></td>
         <td><%= measurement.value %></td>
       </tr>
     <% end %>

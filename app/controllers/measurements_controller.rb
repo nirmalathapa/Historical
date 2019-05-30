@@ -8,13 +8,13 @@ class MeasurementsController < ApplicationController
 
       current_record, last_record  = Measurement
         .where(user: current_user, measurement_type: type)
-        .order(created_at: :desc)
+        .order(measurement_date: :desc)
         .limit(2)
         .to_a
 
       change = current_record&.value.to_f - last_record&.value.to_f
 
-      data[type.name] = { date: last_record&.measurement_date, value: last_record&.value, change: change }
+      data[type.type_name] = { date: last_record&.measurement_date, value: last_record&.value, change: change }
       data
     end
   end
@@ -23,7 +23,7 @@ class MeasurementsController < ApplicationController
     @measurement_form = MeasurementForm.new(current_user, tracker, measurement_params)
 
     if @measurement_form.save
-      redirect_to new_measurement_path, notice: 'Saved'
+      redirect_to new_measurement_path(tracker_id: tracker.id), notice: 'Saved'
     else
       render :new
     end
@@ -36,7 +36,7 @@ class MeasurementsController < ApplicationController
         .find_by(user: current_user, measurement_date: @date, measurement_type: type)
         .try(:value)
 
-      data[type.name] = value
+      data[type.type_name] = value
       data
     end
   end
@@ -45,7 +45,7 @@ class MeasurementsController < ApplicationController
     @type = MeasurementType.find_by(name: params[:type]) || MeasurementType.last
     @measurements = Measurement
         .where(user: current_user, measurement_type: @type)
-        .order(created_at: :desc)
+        .order(measurement_date: :desc)
   end
 
   private

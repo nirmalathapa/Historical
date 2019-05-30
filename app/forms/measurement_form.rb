@@ -1,7 +1,8 @@
 class MeasurementForm
   include ActiveModel::Model
 
-  attr_accessor :date, :user, :tracker
+  attr_accessor :date, :user
+  attr_reader :tracker
 
   def initialize(user, tracker, attributes = {})
     @user = user
@@ -21,7 +22,7 @@ class MeasurementForm
   end
 
   def measurement_fields
-    @measurement_fields ||= measurement_types.all.map(&:name)
+    @measurement_fields ||= measurement_types.map(&:type_name)
   end
 
   def date
@@ -31,10 +32,10 @@ class MeasurementForm
   def save
     measurement_fields.each do |field|
       if (value = public_send(field)).present?
-        type = measurement_types.find_by(name: field)
+        type = measurement_types.find_by(type_name: field)
         Measurement
           .where(user: user, measurement_date: date, measurement_type: type)
-          .first_or_create
+          .first_or_create!
           .update_attributes!(value: value)
       end
     end
@@ -43,7 +44,7 @@ class MeasurementForm
   private
 
   def fetch_value(field)
-    type = measurement_types.find_by(name: field)
+    type = measurement_types.find_by(type_name: field)
     Measurement
       .find_by(user: user, measurement_date: date, measurement_type: type)
       .try(:value)
