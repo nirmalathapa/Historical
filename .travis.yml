@@ -1,7 +1,7 @@
 language: ruby
 
 rvm:
- - 2.4
+ - 2.6
 
 services: postgresql
 
@@ -17,7 +17,7 @@ cache:
 
 install:
   - bundle install
-  - nvm install 8
+  - nvm install 10
   - node -v
   - npm i -g yarn
   - yarn install
