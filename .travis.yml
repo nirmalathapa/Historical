@@ -16,6 +16,7 @@ cache:
   yarn: true
 
 install:
+  - gem install bundler:2.0.1
   - bundle install
   - nvm install 10.15
   - node -v

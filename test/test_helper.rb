@@ -1,9 +1,12 @@
-ENV["RAILS_ENV"] ||= "test"
-require File.expand_path('../../config/environment', __FILE__)
+ENV['RAILS_ENV'] ||= 'test'
+require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/pride'
 
 class ActiveSupport::TestCase
+  # Run tests in parallel with specified workers
+  parallelize(workers: :number_of_processors)
+
   ActiveRecord::Migration.check_pending!
   include FactoryGirl::Syntax::Methods
 
