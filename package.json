@@ -15,7 +15,7 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.2",
+    "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.7.0"
   },
   "engines": {
