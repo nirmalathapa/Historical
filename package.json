@@ -10,7 +10,7 @@
     "picnic": "^6.5.0",
     "prop-types": "^15.7.2",
     "rails-ujs": "^5.2.4",
-    "react": "^16.11.0",
+    "react": "^16.13.1",
     "react-dom": "^16.11.0",
     "webpack-merge": "^4.2.2"
   },
