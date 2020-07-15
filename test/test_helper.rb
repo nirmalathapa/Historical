@@ -8,7 +8,7 @@ class ActiveSupport::TestCase
   parallelize(workers: :number_of_processors)
 
   ActiveRecord::Migration.check_pending!
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #

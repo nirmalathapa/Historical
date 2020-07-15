@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :measurement_type do
     name 'Speed'
     tracker
