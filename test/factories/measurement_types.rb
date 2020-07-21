@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :measurement_type do
-    name 'Speed'
+    name { 'Speed' }
     tracker
   end
 end
